@@ -1,0 +1,309 @@
+:root {
+  font-size: 6.25%;
+  --bg-header: hsla(218, 17%, 62%, 1);
+  --bg-main: #EFF1FF;
+  --bg-banner: #CBC0D3;
+  --font-default: 'Staatliches', sans-serif;
+  --font-p: 'Palanquin', sans-serif;
+  --cp: hsla(274, 84%, 12%, 1);
+  --ch1: hsla(232, 17%, 35%, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16rem;
+  font-family: var(--font-default);
+}
+
+.page {
+  display: grid;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+header {
+  grid-area: header;
+  height: 279rem;
+  background-color: var(--bg-header);
+}
+
+header svg {
+  margin: 32rem auto;
+  height: 137rem;
+}
+
+header > p {
+  opacity: 0;
+}
+
+main {
+  grid-area: main;
+}
+
+.banner {
+  height: 49rem;
+  background-color: var(--bg-banner);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 40rem;
+  font-weight: normal;
+  line-height: 34rem;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  text-shadow: 0rem 2rem 2rem rgba(0, 0, 0, 0.25); 
+}
+
+img {
+  width: 100%;
+  height: 250rem;
+
+  object-fit: cover;
+
+  border-radius: 20rem;
+  animation: downUp 1s ease;
+  transition: all 200ms;
+}
+
+.cards-wrapper {
+  padding: 0 32rem;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 32rem;
+  transition: all 200ms;
+}
+
+.card:hover {
+  transform: scale(1.08);
+  filter: saturate(150%);
+}
+
+.card:nth-child(even) img {
+  height: 450rem;
+}
+
+.grid-item-5, .grid-item-6 {
+  display: none;
+}
+
+p {
+  font-family: var(--font-p);
+  font-size: 14rem;
+  font-weight: normal;
+  line-height: 15rem;
+  color: var(--cp);
+
+  margin: 14rem 36rem 55rem;
+}
+
+h2 {
+  opacity: 0;
+
+  font-size: 20rem;
+  font-weight: normal;
+  line-height: 34rem;
+  letter-spacing: 0.05em;
+  background-color: #FEEAFA;
+  color: var(--ch1);
+
+  width: fit-content;
+  padding: 1rem 27rem;
+  border-radius: 20rem;
+  
+  position: absolute;
+  top: 16rem;
+  right: 16rem;
+
+  animation: showUp 1s 700ms forwards;
+}
+
+footer {
+  display: none;
+}
+
+@keyframes downUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 599px) {
+  .page {
+    grid-template-areas: "header"
+    "main";
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .page {
+    width: 100vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "header main";
+    grid-template-rows: auto;
+    grid-template-columns: minmax(43%, 500px) 60%;
+  }
+  
+  .cards-wrapper {
+    margin-right: 32rem;
+  }
+
+  header {
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 0 0 0;
+  }
+
+  header > p {
+    margin-top: 30px;
+    opacity: 1;
+    font-size: 20rem;
+    line-height: 22rem;
+    color: #fff;
+  }
+
+  main {
+    padding-top: 30rem;
+  }
+  
+  main > p {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .page {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: 
+      "header main"
+      "header footer";
+    grid-template-rows: auto;
+    grid-template-columns: minmax(80px, 400px) auto;
+  }
+
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-columns: minmax(150px, 100vw);
+    grid-auto-rows: 250px 168px 250px 0;
+    grid-gap: 32px;
+    grid-template-areas: 
+      "image1 image2 image3"
+      "image4 image2 image6"
+      "image4 image5 image6";
+  }
+
+  .card {
+    margin: 0;
+  }
+
+  .card img {
+    height: 250px;
+  }
+  
+  header {
+    height: 100%;
+    width: 100%;
+    padding: 0 0 0 0;
+  }
+
+  header > p {
+    margin-top: 30px;
+    opacity: 1;
+    font-size: 20rem;
+    line-height: 22rem;
+    color: #fff;
+  }
+
+  main {
+    padding-top: 30rem;
+  }
+  
+  main > p {
+    display: none;
+  }
+
+  main > h2 {
+    font-size: 12rem;
+  }
+
+  .grid-item-1 {
+    grid-area: image1;
+    grid-row: 1 / 1;
+  }
+
+  .grid-item-2 {
+    grid-area: image2;
+    grid-row: 1 / 3;
+  }
+
+  .grid-item-3 {
+    grid-area: image3;
+  }
+
+  .grid-item-4 {
+    grid-area: image4;
+  }
+
+  .grid-item-5 {
+    grid-area: image5;
+    display: block;
+  }
+
+  .grid-item-6 {
+    grid-area: image6;
+    display: block;
+  }
+
+  footer {
+    display: block;
+    margin: 0 0;
+    grid-area: footer;
+  }
+
+  footer p {
+    font-weight: normal;
+    letter-spacing: 2rem;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #4A4E69;  
+  }
+
+  a {
+    text-decoration: inherit;   
+  }
+}
